@@ -45,7 +45,7 @@ browser.visit(article_url)
 
 #create Buetiful soup 
 article_html = browser.html
-article_soup = bs(article_html, 'html' )
+article_soup = bs(article_html, 'lxml' )
 print(article_soup)
 
 
@@ -76,7 +76,7 @@ browser.visit(jpl_url)
 
 #create Buetiful soup 
 img_html = browser.html
-img_soup = bs(img_html, 'html')
+img_soup = bs(img_html, 'lxml')
 
 
 # In[9]:
@@ -143,7 +143,7 @@ browser.visit(usgs_url)
 
 #create Buetiful soup 
 usgs_html = browser.html
-hemi_soup = bs(usgs_html, 'html')
+hemi_soup = bs(usgs_html, 'lxml')
 
 
 # In[28]:

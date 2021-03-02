@@ -9,7 +9,7 @@ mongo = (app, uri="mongodb://localhost:27017/mars_app")
 
 @app.route("/")
 def home():
-    mars_info = mongo.db.collection.find_one()
+    mars_info = mongo.db.mars_info
     return render_template("index.html", mars_info = mars_info)
 
 
