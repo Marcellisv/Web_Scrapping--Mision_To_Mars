@@ -26,9 +26,9 @@ browser = Browser('chrome', **executable_path, headless=False)
 # In[16]:
 
 
-executable_path = {'executable_path': '/Users/marcellisv/.wdm/drivers/chromedriver/mac64/88.0.4324.96/chromedriver'}
-browser = Browser('chrome', executable_path, headless=False)
 
+executable_path = {'executable_path': '/Users/marcellisv/.wdm/drivers/chromedriver/mac64/88.0.4324.96/chromedriver'}
+browser = Browser('chrome', **executable_path, headless=False)
 
 # ## Mars News Articles Headlines
 
@@ -173,10 +173,9 @@ links = browser.find_by_css("a.product-item h3")
 for i in range(len(links)):
     hemi = {}
     
-    #We have to find the elements on each loop to avoid a stale element exception
     browser.find_by_css("a.product-item h3")[i].click()
     
-    #Next, we find the Sample image anchor tag and extract the href
+    #Get Img URL
     sample_elem = browser.links.find_by_text('Sample').first
     hemi['img_url'] = sample_elem['href']
     
@@ -184,11 +183,10 @@ for i in range(len(links)):
     hemi['title'] = browser.find_by_css("h2.title").text
     
     #Append hemisphere object to list
-    hemi_urls.append(hemi)
+    hemi_url.append(hemi)
     
-    #Finally, we navigate backwards
     browser.back()
-    
+#Print
 hemi_url
 
 
@@ -214,7 +212,7 @@ combined_mars_dict["article_headline"] = article_headline
 combined_mars_dict["article_body"] = article_body
 combined_mars_dict["featured_image_url"] = featured_image_url
 combined_mars_dict["mars_facts_dict"] = mars_facts_df
-combined_mars_dict["hemi_list"]= hemi_list
+combined_mars_dict["hemi_url"]= hemi_url
 
 
 # In[87]:
