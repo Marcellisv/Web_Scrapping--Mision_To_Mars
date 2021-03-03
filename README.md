@@ -22,6 +22,9 @@ news_title = "NASA's Next Mars Mission to Investigate Interior of Red Planet"
 news_p = "Preparation of NASA's next spacecraft to Mars, InSight, has ramped up this summer, on course for launch next May from Vandenberg Air Force Base in central California -- the first interplanetary launch in history from America's West Coast."
 ```
 
+<img width="902" alt="Screen Shot 2021-03-03 at 7 14 52 AM" src="https://user-images.githubusercontent.com/70725518/109804952-dc1a2300-7bf0-11eb-8ee7-44ef6f662561.png">
+
+
 ### JPL Mars Space Images - Featured Image
 
 * Visit the url for JPL Featured Space Image [here](https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars).
@@ -32,9 +35,9 @@ news_p = "Preparation of NASA's next spacecraft to Mars, InSight, has ramped up 
 
 * Make sure to save a complete url string for this image.
 
-```python
-# Example:
-featured_image_url = 'https://www.jpl.nasa.gov/spaceimages/images/largesize/PIA16225_hires.jpg'
+<img width="907" alt="Screen Shot 2021-03-03 at 7 15 21 AM" src="https://user-images.githubusercontent.com/70725518/109804903-cc9ada00-7bf0-11eb-9808-2243605543f1.png">
+![Uploading Screen Shot 2021-03-03 at 7.14.52 AM.png…]()
+
 ```
 
 ### Mars Facts
@@ -42,6 +45,9 @@ featured_image_url = 'https://www.jpl.nasa.gov/spaceimages/images/largesize/PIA1
 * Visit the Mars Facts webpage [here](https://space-facts.com/mars/) and use Pandas to scrape the table containing facts about the planet including Diameter, Mass, etc.
 
 * Use Pandas to convert the data to a HTML table string.
+
+<img width="372" alt="Screen Shot 2021-03-03 at 7 16 17 AM" src="https://user-images.githubusercontent.com/70725518/109805000-ea683f00-7bf0-11eb-8a10-3a9b029ba54c.png">
+
 
 ### Mars Hemispheres
 
@@ -62,6 +68,7 @@ hemisphere_image_urls = [
     {"title": "Syrtis Major Hemisphere", "img_url": "..."},
 ]
 ```
+<img width="697" alt="Screen Shot 2021-03-03 at 7 17 04 AM" src="https://user-images.githubusercontent.com/70725518/109805021-efc58980-7bf0-11eb-828a-2dec10366ff3.png">
 
 - - -
 
