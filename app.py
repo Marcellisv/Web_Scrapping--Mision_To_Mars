@@ -19,7 +19,7 @@ db.mars_db.drop()
 @app.route("/scrape")
 def scraper():
     mars_data = mongo.db.mars
-    mars = scrape_mars.scrape()
+    mars_db = scrape_mars.scrape()
     mars_data.update({}, mars, upsert=True)
 
     # Redirect back to home page

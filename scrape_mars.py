@@ -23,16 +23,16 @@ executable_path = {'executable_path': ChromeDriverManager().install()}
 browser = Browser('chrome', **executable_path, headless=False)
 
 
-# In[16]:
-
+# In[109]:
 
 
 executable_path = {'executable_path': '/Users/marcellisv/.wdm/drivers/chromedriver/mac64/88.0.4324.96/chromedriver'}
 browser = Browser('chrome', **executable_path, headless=False)
 
+
 # ## Mars News Articles Headlines
 
-# In[17]:
+# In[92]:
 
 
 
@@ -64,39 +64,39 @@ print(article_body)
 # ## JPL Mars Space Images - Featured Image
 # 
 
-# In[45]:
+# In[119]:
 
 
+url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
+browser.visit(url)
+time.sleep(5)
 
-jpl_url = "https://www.jpl.nasa.gov/images?search=&category=Mars"
-browser.visit(jpl_url)
 
-
-# In[46]:
+# In[140]:
 
 
 img_html = browser.html
-img_soup = bs(img_html, 'lxml')
+img_soup = bs(img_html, 'html.parser')
+print(img_soup.prettify())
 
 
-# In[ ]:
+# In[143]:
 
 
-mars_img = img_soup.find_all('img')[3]["src"]
-featured_image_url = 'https://www.jpl.nasa.gov' + mars_img
-print(featured_image_url)
+feature_image_url = "https://www.jpl.nasa.gov/images/supercams-mars-meteorite-aboard-the-iss"
+feature_image_url 
 
 
 # ## Mars Facts
 
-# In[50]:
+# In[144]:
 
 
 facts_url = 'https://space-facts.com/mars/'
 browser.visit = (facts_url)
 
 
-# In[51]:
+# In[145]:
 
 
 #Convert Table to HTML using pandas 
@@ -104,7 +104,7 @@ facts_table = pd.read_html(facts_url)
 facts_table
 
 
-# In[52]:
+# In[146]:
 
 
 mars_facts_df = facts_table[0]
@@ -114,7 +114,7 @@ mars_facts_df.columns = ["Description", "Value"]
 mars_facts_df
 
 
-# In[53]:
+# In[147]:
 
 
 #Set the index to the `Description` column
@@ -122,14 +122,14 @@ mars_facts_df.set_index('Description', inplace=True)
 mars_facts_df
 
 
-# In[54]:
+# In[148]:
 
 
 html_table = mars_facts_df.to_html()
 mars_facts_df.to_html("mars_facts_data.html")
 
 
-# In[55]:
+# In[149]:
 
 
 mars_facts_dict = mars_facts_df.to_dict
@@ -138,21 +138,21 @@ mars_facts_dict
 
 # ## Mars Hemispheres
 
-# In[77]:
+# In[155]:
 
 
 executable_path = {'executable_path': '/Users/marcellisv/.wdm/drivers/chromedriver/mac64/88.0.4324.96/chromedriver'}
 browser = Browser('chrome', **executable_path, headless=False)
 
 
-# In[82]:
+# In[156]:
 
 
 usgs_url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
 browser.visit(usgs_url)
 
 
-# In[83]:
+# In[157]:
 
 
 #create Buetiful soup 
@@ -161,7 +161,7 @@ hemi_soup = bs(usgs_html, 'html.parser')
 hemi_soup
 
 
-# In[84]:
+# In[158]:
 
 
 hemi_url = []
@@ -173,9 +173,10 @@ links = browser.find_by_css("a.product-item h3")
 for i in range(len(links)):
     hemi = {}
     
+    #We have to find the elements on each loop to avoid a stale element exception
     browser.find_by_css("a.product-item h3")[i].click()
     
-    #Get Img URL
+    #Next, we find the Sample image anchor tag and extract the href
     sample_elem = browser.links.find_by_text('Sample').first
     hemi['img_url'] = sample_elem['href']
     
@@ -185,27 +186,22 @@ for i in range(len(links)):
     #Append hemisphere object to list
     hemi_url.append(hemi)
     
+    #Finally, we navigate backwards
     browser.back()
-#Print
+    
 hemi_url
-
-
-# In[ ]:
-
-
-
 
 
 # ## First Combine all data into one dictionary
 # 
 
-# In[85]:
+# In[159]:
 
 
 combined_mars_dict= {}
 
 
-# In[86]:
+# In[160]:
 
 
 combined_mars_dict["article_headline"] = article_headline
@@ -215,8 +211,14 @@ combined_mars_dict["mars_facts_dict"] = mars_facts_df
 combined_mars_dict["hemi_url"]= hemi_url
 
 
-# In[87]:
+# In[161]:
 
 
 combined_mars_dict
+
+
+# In[ ]:
+
+
+
 
