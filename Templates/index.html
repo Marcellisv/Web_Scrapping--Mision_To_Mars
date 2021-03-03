@@ -20,8 +20,8 @@
         <!--News-->
         <div class="container">
             <h3>Latest Mars News</h3>
-            <h5><strong>{{ mars_info.news_title }}</strong></h6>
-            <p>{{ mars_info.news_p }}</p>
+            <h5><strong>{{ mars_db.news_title }}</strong></h6>
+            <p>{{ mars_db.news_p }}</p>
         </div>
 
         <div class="container">
@@ -29,7 +29,7 @@
                 <!--Image-->
                 <div class="col-md-7">
                     <h3>Featured Mars Image</h3>
-                    <img src="{{ mars_info.featured_image_url }}" style="max-width:100%; max-height: auto;" alt="Featured Image">
+                    <img src="{{ mars_db.featured_image_url }}" style="max-width:100%; max-height: auto;" alt="Featured Image">
                 </div>
 
                     <!--Table-->
@@ -37,7 +37,7 @@
                 <div class = "col-md-5">
                     <h3>Mars Facts</h3>
                     <div>
-                        {{ mars_info.facts_html| safe}}
+                        {{ mars_db.facts_html| safe}}
                     </div>
                 </div> 
             </div>
@@ -53,9 +53,9 @@
                     {% for item in mars_info.hemispheres_image_urls %}
                     <div class="col-md-6">
                         <div class="card">
-                            <img class="card-img-top" src="{{ item.img_url }}" />
+                            <img class="card-img-top" src="{{ mars_db.img_url }}" />
                             <div class="card-body">
-                                <p class="card-text">{{ item.title }}</p>
+                                <p class="card-text">{{ mars_db.title }}</p>
                             </div>
                         </div>
                     </div>
